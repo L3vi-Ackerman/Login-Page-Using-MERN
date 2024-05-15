@@ -1,9 +1,19 @@
-import React from "react";
-import SignUp from "./SignUp-Page";
-import { Link } from 'react-router-dom';
-import Button from "../Components/Button";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "../App.css";
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Email:", email);
+    console.log("Password:", password);
+    setEmail("");
+    setPassword("");
+  };
   return (
     <>
       <div className="glass-effect">
@@ -14,7 +24,7 @@ function Login() {
               <p>
                 Don't have an account yet? <Link to="/signup">SignUp</Link>
               </p>
-              <form>
+              <form onSubmit={handleSubmit}>
                 <label htmlFor="email">E-mail:</label>
                 <input
                   type="email"
@@ -22,19 +32,33 @@ function Login() {
                   id="email"
                   className="email"
                   placeholder="Enter your E-mail address"
+                  value={email}
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
                 <label htmlFor="password">Password:</label>
-                <input
-                  type="password"
-                  name="password"
-                  id="password"
-                  className="password"
-                  placeholder="Enter your password"
-                />
-              <div className="button-containers flex">
-                <Button label="Login" className={'.login-button'} width={300}/>
-                </div>             
-
+                <div className="password-input">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                  </button>
+                </div>
+                <div className="button-containers flex">
+                  <button type="submit" className="login-button">
+                    Login
+                  </button>
+                </div>
               </form>
             </div>
             <div className="login-image ">
