@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const login = require("../Database/login-schema");
 const Signup = require("../Database/signup-schema");
 const bcrypt = require("bcryptjs");
 router.get("/", (req, res) => {
@@ -9,7 +8,7 @@ router.get("/", (req, res) => {
 
 router.post("/signup", async (req, res) => {
   try {
-    const { username, email, password, confirmPassword, phone, age } = req.body;
+    const { username, email, password, confirmPassword, phone, dob } = req.body;
     console.log("username: ", username);
     console.log("Confirm Password:", confirmPassword);
     const newUser = new Signup({
@@ -18,7 +17,7 @@ router.post("/signup", async (req, res) => {
       password,
       confirmPassword,
       phone,
-      age,
+      dob,
     });
 
     if (password == confirmPassword) {

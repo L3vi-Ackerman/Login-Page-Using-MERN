@@ -7,16 +7,35 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-    setEmail("");
-    setPassword("");
+    try {
+      const response = await fetch('http://localhost:3100/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to log in');
+      }
+  
+      const data = await response.json();
+      console.log('Login successful:', data);
+  
+      // Clear the form fields after submission
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      // Handle errors if the request fails
+      console.error('Error logging in:', error);
+    }
   };
   return (
     <>
-      <div className="glass-effect">
+      
         <div className="flex container box">
           <div className="grid grid-two-cols">
             <div className="login-form ">
@@ -54,8 +73,8 @@ function Login() {
                     <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                   </button>
                 </div>
-                <div className="button-containers flex">
-                  <button type="submit" className="login-button">
+                <div className="button-containers">
+                  <button type="submit" className="submit-button">
                     Login
                   </button>
                 </div>
@@ -71,7 +90,7 @@ function Login() {
             </div>
           </div>
         </div>
-      </div>
+
     </>
   );
 }

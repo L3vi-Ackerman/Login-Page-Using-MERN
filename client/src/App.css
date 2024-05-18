@@ -8,6 +8,9 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --background-color: #f8fefe;
   --font-color: #00ffff;
@@ -25,9 +28,9 @@
 .container {
   width: 1000px;
   background-color: var(--background-color);
-  margin: 40px auto;
+  margin: 10px auto;
   border: 1px solid black;
-  height: 600px;
+  height: 550px;
   padding: 10px;
 }
 .flex {
@@ -47,6 +50,16 @@ p {
   color: #8e8c8c;
   margin-bottom: 30px;
 }
+h3 {
+  font-size: 3rem;
+  font-family: "Great Vibes", sans-serif;
+}
+li {
+  list-style: none;
+  font-size: 15px;
+  margin-right: 20px;
+  cursor: pointer;
+}
 h1 {
   font-family: "Great Vibes", sans-serif;
   font-size: 4rem;
@@ -57,6 +70,8 @@ label {
 }
 input[type="email"],
 input[type="password"],
+input[type="date"],
+input[type="number"],
 input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -75,6 +90,23 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: #45a049;
 }
+
+/* NAV BAR */
+.navbar {
+  display: flex;
+  margin: 10px;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar ul li a {
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+.navbar-links a:hover {
+  color: #ff9800;
+}
 .login-form {
   padding: 30px;
   width: 100%;
@@ -88,6 +120,9 @@ input[type="submit"]:hover {
 
 .button-containers {
   margin: 20px 0px 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 .password-input {
   position: relative;
@@ -95,7 +130,7 @@ input[type="submit"]:hover {
 
 .password-input input {
   padding-right: 30px;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .password-input button {
@@ -110,14 +145,26 @@ input[type="submit"]:hover {
   margin: 0;
 }
 
-.login-button {
+.submit-button {
+  color: #f7ddc9;
   border: none;
-  width: 300px;
+  width: 200px;
   padding: 8px;
-  border-radius: 20px;
-  background-color: black;
+  border-radius: 10px;
+  background-color: #e1bca1;
   color: white;
   font-family: Roboto;
   font-size: 15px;
   cursor: Pointer;
+}
+.button-containers button {
+  transition: background-color 0.3s ease;
+}
+.button-containers button:hover {
+  background-color: #e4823b;
+}
+.signup-container {
+  width: 30%;
+  margin: 10px auto;
+  padding: 20px;
 }
