@@ -8,8 +8,9 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-html {
-  scroll-behavior: smooth;
+html,body {
+  height: 100%;
+  width: 100%;
 }
 :root {
   --background-color: #f8fefe;
@@ -26,11 +27,10 @@ html {
   backdrop-filter: blur(10px);
 }
 .container {
-  width: 1000px;
-  background-color: var(--background-color);
+  width: 100%;
+  height: calc(100% - 60px);
+  /* background-color: var(--background-color); */
   margin: 10px auto;
-  border: 1px solid black;
-  height: 550px;
   padding: 10px;
 }
 .flex {
@@ -52,6 +52,7 @@ p {
 }
 h3 {
   font-size: 3rem;
+  color: #000932;
   font-family: "Great Vibes", sans-serif;
 }
 li {
@@ -63,6 +64,7 @@ li {
 h1 {
   font-family: "Great Vibes", sans-serif;
   font-size: 4rem;
+  color: #14A8B6;
 }
 label {
   display: block;
@@ -94,6 +96,7 @@ input[type="submit"]:hover {
 /* NAV BAR */
 .navbar {
   display: flex;
+  height: 60px;
   margin: 10px;
   padding: 5px;
   align-items: center;
@@ -114,8 +117,13 @@ input[type="submit"]:hover {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
 .login-image {
   margin: auto 10px;
+}
+.login-image img{
+  height: 100%;
+  width: 100%;
 }
 
 .button-containers {
@@ -158,7 +166,9 @@ input[type="submit"]:hover {
   cursor: Pointer;
 }
 .button-containers button {
+  border: none;
   transition: background-color 0.3s ease;
+  background-color: #14A8B6;
 }
 .button-containers button:hover {
   background-color: #e4823b;
